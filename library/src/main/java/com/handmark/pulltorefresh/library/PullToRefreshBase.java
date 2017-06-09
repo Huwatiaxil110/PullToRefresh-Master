@@ -34,6 +34,7 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.handmark.pulltorefresh.library.internal.CurveLoadingLayout;
 import com.handmark.pulltorefresh.library.internal.FlipLoadingLayout;
 import com.handmark.pulltorefresh.library.internal.LoadingLayout;
 import com.handmark.pulltorefresh.library.internal.RotateLoadingLayout;
@@ -1297,7 +1298,12 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 		 * This is the old default, and what is commonly used on iOS. Uses an
 		 * arrow image which flips depending on where the user has scrolled.
 		 */
-		FLIP;
+		FLIP,
+
+		/**
+		 * 用来画弧形
+         */
+		CURVE;
 
 		static AnimationStyle getDefault() {
 			return ROTATE;
@@ -1314,20 +1320,26 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 		static AnimationStyle mapIntToValue(int modeInt) {
 			switch (modeInt) {
 				case 0x0:
-				default:
 					return ROTATE;
 				case 0x1:
 					return FLIP;
+				case 0x2:
+					return CURVE;
+				default:
+					return ROTATE;
 			}
 		}
 
 		LoadingLayout createLoadingLayout(Context context, Mode mode, Orientation scrollDirection, TypedArray attrs) {
 			switch (this) {
 				case ROTATE:
-				default:
 					return new RotateLoadingLayout(context, mode, scrollDirection, attrs);
 				case FLIP:
 					return new FlipLoadingLayout(context, mode, scrollDirection, attrs);
+				case CURVE:
+					return new CurveLoadingLayout(context, mode, scrollDirection, attrs);
+				default:
+					return new RotateLoadingLayout(context, mode, scrollDirection, attrs);
 			}
 		}
 	}

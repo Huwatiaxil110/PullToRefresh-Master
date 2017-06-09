@@ -50,12 +50,16 @@
             android:label="PtR HorizontalScrollView" >
         </activity>
         <activity
+            android:name=".PullToRefreshWebView2Activity"
+            android:label="PtR WebView Advanced" >
+        </activity>
+        <activity
             android:name=".PullToRefreshViewPagerActivity"
             android:label="PtR ViewPager" >
         </activity>
         <activity
-            android:name=".PullToRefreshWebView2Activity"
-            android:label="PtR WebView Advanced" >
+            android:name=".CurveActivity"
+            android:label="CurveActivity" >
         </activity>
     </application>
 
