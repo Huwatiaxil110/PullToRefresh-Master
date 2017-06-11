@@ -16,6 +16,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 
 public class CurveActivity extends Activity{
     PullToRefreshScrollView mScrollView;
+    CurveView mCurveView;
 
     Handler mHandler = new Handler(){
         @Override
@@ -33,12 +34,19 @@ public class CurveActivity extends Activity{
     }
 
     private void initViews(){
+        mCurveView = (CurveView) findViewById(R.id.curve_view);
         mScrollView = (PullToRefreshScrollView) findViewById(R.id.refresh_viw);
         mScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ScrollView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
                 Log.e("XXXX", "---- onRefresh ----");
                 mHandler.sendEmptyMessageDelayed(0x11, 2000);
+            }
+        });
+        mScrollView.setOnCurveListener(new PullToRefreshBase.OnCurveListener() {
+            @Override
+            public void drawCurve(int value) {
+                mCurveView.setDrawY(value);
             }
         });
     }

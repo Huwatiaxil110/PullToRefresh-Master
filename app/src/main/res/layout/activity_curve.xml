@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#bbbbbb">
+
+    <com.handmark.pulltorefresh.samples.CurveView
+        android:id="@+id/curve_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"/>
 
     <com.handmark.pulltorefresh.library.PullToRefreshScrollView
         android:id="@+id/refresh_viw"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#bbbbbb"
         app:ptrAnimationStyle="curve">
 
         <LinearLayout
@@ -22,4 +28,4 @@
         </LinearLayout>
     </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
 
-</LinearLayout>
+</RelativeLayout>
