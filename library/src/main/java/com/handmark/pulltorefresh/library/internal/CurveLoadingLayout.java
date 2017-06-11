@@ -17,7 +17,7 @@ public class CurveLoadingLayout extends LoadingLayout{
 
     public CurveLoadingLayout(Context context, PullToRefreshBase.Mode mode, PullToRefreshBase.Orientation scrollDirection, TypedArray attrs) {
         super(context, mode, scrollDirection, attrs);
-        setBackgroundColor(Color.BLACK);
+        setBackgroundColor(Color.TRANSPARENT);
     }
 
     @Override

@@ -978,12 +978,24 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
 		switch (getPullToRefreshScrollDirection()) {
 			case VERTICAL:
+				Log.e("XXXX", "value = " + value);
 				scrollTo(0, value);
 				break;
 			case HORIZONTAL:
 				scrollTo(value, 0);
 				break;
 		}
+		if(mOnCurveListener != null){
+			mOnCurveListener.drawCurve(value);
+		}
+	}
+
+	OnCurveListener mOnCurveListener;
+	public void setOnCurveListener(OnCurveListener mOnCurveListener){
+		this.mOnCurveListener = mOnCurveListener;
+	}
+	public interface OnCurveListener{
+		void drawCurve(int value);
 	}
 
 	/**
